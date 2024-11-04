@@ -8,7 +8,7 @@ export function SwaggerConfigInt(app: INestApplication): void{
     .setDescription("backend of Clinic website")
     .setVersion("v0.0.1")
     .addBearerAuth(SwaggerAuthConfig(), "Authorization")
-    .build();
+    .build(); 
 
     const swaggerDocument = SwaggerModule.createDocument(app, document);
     SwaggerModule.setup("/swagger", app, swaggerDocument);

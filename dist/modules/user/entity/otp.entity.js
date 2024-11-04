@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:type", Date)
 ], OtpEntity.prototype, "expires_in", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => user_entity_1.UserEntity, user => user.otp, { onDelete: "CASCADE" }),
+    (0, typeorm_1.OneToOne)(() => user_entity_1.UserEntity, user => user.otp),
     __metadata("design:type", user_entity_1.UserEntity)
 ], OtpEntity.prototype, "user", void 0);
 exports.OtpEntity = OtpEntity = __decorate([

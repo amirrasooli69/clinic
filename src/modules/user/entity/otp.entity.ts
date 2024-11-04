@@ -14,6 +14,6 @@ export class OtpEntity{
     code: string;
     @Column()
     expires_in: Date;
-    @OneToOne(()=> UserEntity, user => user.otp, {onDelete: "CASCADE"})
+    @OneToOne(()=> UserEntity, user => user.otp)
     user: UserEntity
 }

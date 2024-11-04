@@ -25,24 +25,49 @@ let UserService = class UserService {
         this.req = req;
     }
     async create(userDto) {
-        await this.findUser();
         const { first_name, last_name, mobile } = userDto;
-        const user = this.userRepository.create({
-            first_name,
-            last_name,
-            mobile
-        });
+        let user = await this.userRepository.findOneBy({ mobile });
+        let message = null;
+        if (user) {
+            if (first_name)
+                user.first_name = first_name;
+            if (last_name)
+                user.last_name = last_name;
+            message = message_enum_1.PublicMessage.Updated;
+        }
+        else {
+            user = this.userRepository.create({
+                first_name,
+                last_name,
+                mobile
+            });
+            message = message_enum_1.PublicMessage.Created;
+        }
         await this.userRepository.save(user);
         return {
-            message: message_enum_1.PublicMessage.created
+            message
         };
     }
-    async findUser() {
-        const { id: userId } = this?.req?.user;
-        const user = await this.userRepository.findOneBy(userId);
+    async checkExistUser(id) {
+        const user = await this.userRepository.findOneBy({ id });
         if (!user)
-            throw new common_1.UnauthorizedException(message_enum_1.AuthMessage.UnEntredAcoount);
+            throw new common_1.NotFoundException(message_enum_1.NotFoundMessage.NotFoundUser);
         return user;
+    }
+    async findAll() {
+        return await this.userRepository.find();
+    }
+    async getUserById(id) {
+        return await this.checkExistUser(id);
+    }
+    async delete(id) {
+        const user = await this.checkExistUser(id);
+        if (!user)
+            throw new common_1.NotFoundException(message_enum_1.NotFoundMessage.NotFoundUser);
+        await this.userRepository.remove(user);
+        return {
+            message: message_enum_1.PublicMessage.Deleted
+        };
     }
 };
 exports.UserService = UserService;

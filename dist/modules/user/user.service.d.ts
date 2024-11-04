@@ -8,7 +8,12 @@ export declare class UserService {
     private req;
     constructor(userRepository: Repository<UserEntity>, req: Request);
     create(userDto: CreateUserDto): Promise<{
+        message: any;
+    }>;
+    checkExistUser(id: number): Promise<UserEntity>;
+    findAll(): Promise<UserEntity[]>;
+    getUserById(id: number): Promise<UserEntity>;
+    delete(id: number): Promise<{
         message: PublicMessage;
     }>;
-    findUser(): Promise<UserEntity>;
 }

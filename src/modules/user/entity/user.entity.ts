@@ -19,7 +19,7 @@ export class UserEntity{
     mobile_verify: boolean
     @Column({nullable: true})
     otpId: number;
-    @OneToOne(()=> OtpEntity, otp => otp.user)
+    @OneToOne(()=> OtpEntity, otp => otp.user, {onDelete: "CASCADE"})
     @JoinColumn()
     otp: OtpEntity
 }

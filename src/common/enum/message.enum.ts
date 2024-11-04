@@ -2,7 +2,10 @@
 export enum PublicMessage {
     SendOtpCode= "کد باموفقعیت ارسال شد",
     EntredSuccessfully= "باموفقیت وارد شدید",
-    created="با موفقیت ایجاد شد"
+    Created="با موفقیت ایجاد شد",
+    Updated= "به روز رسانی انجام شد",
+    Deleted = "باموفقعیت حذف شد",
+
 }
 
 export enum BadRequestMessage {

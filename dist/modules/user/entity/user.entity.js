@@ -44,7 +44,7 @@ __decorate([
     __metadata("design:type", Number)
 ], UserEntity.prototype, "otpId", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => otp_entity_1.OtpEntity, otp => otp.user),
+    (0, typeorm_1.OneToOne)(() => otp_entity_1.OtpEntity, otp => otp.user, { onDelete: "CASCADE" }),
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", otp_entity_1.OtpEntity)
 ], UserEntity.prototype, "otp", void 0);

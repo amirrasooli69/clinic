@@ -24,6 +24,15 @@ let UserController = class UserController {
     create(userDto) {
         return this.userService.create(userDto);
     }
+    getUserById(id) {
+        return this.userService.getUserById(id);
+    }
+    findAll() {
+        return this.userService.findAll();
+    }
+    delete(id) {
+        return this.userService.delete(id);
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -33,6 +42,26 @@ __decorate([
     __metadata("design:paramtypes", [user_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)("/:id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "getUserById", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Delete)("/delete/:id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "delete", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)("user"),
     (0, swagger_1.ApiTags)("User"),

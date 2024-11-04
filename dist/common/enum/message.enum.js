@@ -5,7 +5,9 @@ var PublicMessage;
 (function (PublicMessage) {
     PublicMessage["SendOtpCode"] = "\u06A9\u062F \u0628\u0627\u0645\u0648\u0641\u0642\u0639\u06CC\u062A \u0627\u0631\u0633\u0627\u0644 \u0634\u062F";
     PublicMessage["EntredSuccessfully"] = "\u0628\u0627\u0645\u0648\u0641\u0642\u06CC\u062A \u0648\u0627\u0631\u062F \u0634\u062F\u06CC\u062F";
-    PublicMessage["created"] = "\u0628\u0627 \u0645\u0648\u0641\u0642\u06CC\u062A \u0627\u06CC\u062C\u0627\u062F \u0634\u062F";
+    PublicMessage["Created"] = "\u0628\u0627 \u0645\u0648\u0641\u0642\u06CC\u062A \u0627\u06CC\u062C\u0627\u062F \u0634\u062F";
+    PublicMessage["Updated"] = "\u0628\u0647 \u0631\u0648\u0632 \u0631\u0633\u0627\u0646\u06CC \u0627\u0646\u062C\u0627\u0645 \u0634\u062F";
+    PublicMessage["Deleted"] = "\u0628\u0627\u0645\u0648\u0641\u0642\u0639\u06CC\u062A \u062D\u0630\u0641 \u0634\u062F";
 })(PublicMessage || (exports.PublicMessage = PublicMessage = {}));
 var BadRequestMessage;
 (function (BadRequestMessage) {
