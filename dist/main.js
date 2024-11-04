@@ -6,7 +6,7 @@ const swagger_config_1 = require("./config/swagger.config");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     (0, swagger_config_1.SwaggerConfigInt)(app);
-    const { PORT = 3000 } = process.env;
+    const { PORT = 3001 } = process.env;
     await app.listen(PORT, () => {
         console.log(`http://localhost:${PORT}`);
         console.log(`http://localhost:${PORT}/swagger`);
