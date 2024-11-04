@@ -11,4 +11,4 @@ import { UserService } from "./user.service";
     providers: [UserService]
 })
 
-export class AppModule{}
+export class UserModule{}

@@ -1,13 +1,8 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { typeOrmConfig } from "src/config/typeorm.config";
+import { Injectable } from '@nestjs/common';
 
-@Module({
-    imports: [TypeOrmModule.forRoot(typeOrmConfig()),
-        
-    ],
-    controllers: [],
-    providers: []
-})
-
-export class AppModule{}
+@Injectable()
+export class AppService {
+  getHello(): string {
+    return 'به پروژه کلینیک خوش آمدید';
+  }
+}

@@ -1,4 +1,14 @@
 import { CreateUserDto } from "./dto/user.dto";
+import { UserEntity } from "./entity/user.entity";
+import { Repository } from "typeorm";
+import { Request } from "express";
+import { PublicMessage } from "src/common/enum/message.enum";
 export declare class UserService {
-    create(userDto: CreateUserDto): Promise<void>;
+    private userRepository;
+    private req;
+    constructor(userRepository: Repository<UserEntity>, req: Request);
+    create(userDto: CreateUserDto): Promise<{
+        message: PublicMessage;
+    }>;
+    findUser(): Promise<UserEntity>;
 }

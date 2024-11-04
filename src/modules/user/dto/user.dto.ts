@@ -1,9 +1,9 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
 export class CreateUserDto {
-    @ApiProperty()
-    firest_name: string;
-    @ApiProperty()
+    @ApiPropertyOptional()
+    first_name: string;
+    @ApiPropertyOptional()
     last_name: string;
     @ApiProperty()
     mobile: string;

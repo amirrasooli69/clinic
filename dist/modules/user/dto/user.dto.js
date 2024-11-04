@@ -15,11 +15,11 @@ class CreateUserDto {
 }
 exports.CreateUserDto = CreateUserDto;
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiPropertyOptional)(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "firest_name", void 0);
+], CreateUserDto.prototype, "first_name", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiPropertyOptional)(),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "last_name", void 0);
 __decorate([

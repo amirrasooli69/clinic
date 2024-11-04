@@ -9,12 +9,12 @@ export function typeOrmConfig(): TypeOrmModuleOptions {
     const {DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME} = process.env;
     console.log(DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME);
     return {
-        type: "postgres",
-        host: "localhost",
+        type: "mysql",
+        host: DB_HOST,
         port: +DB_PORT,
-        database: "clinic", 
-        password: "root",
-        username: "postgres",
+        database: DB_NAME, 
+        password: DB_PASSWORD,
+        username: DB_USERNAME,
         autoLoadEntities: false,
         synchronize: true,
         entities: [

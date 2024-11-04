@@ -4,8 +4,8 @@ import { SecuritySchemeObject } from "@nestjs/swagger/dist/interfaces/open-api-s
 
 export function SwaggerConfigInt(app: INestApplication): void{
     const document = new DocumentBuilder()
-    .setTitle("Snappfood")
-    .setDescription("backend of snappfood website")
+    .setTitle("Clinic")
+    .setDescription("backend of Clinic website")
     .setVersion("v0.0.1")
     .addBearerAuth(SwaggerAuthConfig(), "Authorization")
     .build();

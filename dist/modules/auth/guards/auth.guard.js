@@ -21,6 +21,7 @@ let AuthGuard = class AuthGuard {
         const httpContext = context.switchToHttp();
         const request = httpContext.getRequest();
         const token = this.extractToken(request);
+        request.user = await this.authService.validateAccessToken(token);
         return true;
     }
     extractToken(request) {

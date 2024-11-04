@@ -3,5 +3,7 @@ import { UserService } from "./user.service";
 export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
-    create(userDto: CreateUserDto): Promise<void>;
+    create(userDto: CreateUserDto): Promise<{
+        message: import("../../common/enum/message.enum").PublicMessage;
+    }>;
 }

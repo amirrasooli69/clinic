@@ -10,14 +10,21 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_config_1 = require("../../config/typeorm.config");
+const auth_module_1 = require("../auth/auth.module");
+const user_module_1 = require("../user/user.module");
+const app_controller_1 = require("./app.controller");
+const app_service_1 = require("./app.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forRoot((0, typeorm_config_1.typeOrmConfig)())],
-        controllers: [],
-        providers: [],
+        imports: [typeorm_1.TypeOrmModule.forRoot((0, typeorm_config_1.typeOrmConfig)()),
+            auth_module_1.AuthModule,
+            user_module_1.UserModule
+        ],
+        controllers: [app_controller_1.AppController],
+        providers: [app_service_1.AppService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

@@ -16,6 +16,7 @@ exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
 const user_dto_1 = require("./dto/user.dto");
 const user_service_1 = require("./user.service");
+const swagger_1 = require("@nestjs/swagger");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -34,6 +35,7 @@ __decorate([
 ], UserController.prototype, "create", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)("user"),
+    (0, swagger_1.ApiTags)("User"),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 //# sourceMappingURL=user.controller.js.map
