@@ -9,11 +9,11 @@ function typeOrmConfig() {
     const { DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST } = process.env;
     return {
         type: "mysql",
-        host: DB_HOST,
+        host: "localhost",
         port: +DB_PORT,
-        username: DB_USERNAME,
+        database: "clinic",
         password: DB_PASSWORD,
-        database: DB_NAME,
+        username: "root",
         autoLoadEntities: false,
         synchronize: true,
         entities: [
