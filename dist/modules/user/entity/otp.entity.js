@@ -13,6 +13,7 @@ exports.OtpEntity = void 0;
 const entity_name_enum_1 = require("../../../common/enum/entity-name.enum");
 const typeorm_1 = require("typeorm");
 const user_entity_1 = require("./user.entity");
+const clinic_entity_1 = require("../../clinic/entities/clinic.entity");
 let OtpEntity = class OtpEntity {
 };
 exports.OtpEntity = OtpEntity;
@@ -37,9 +38,13 @@ __decorate([
     __metadata("design:type", Date)
 ], OtpEntity.prototype, "expires_in", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => user_entity_1.UserEntity, user => user.otp),
+    (0, typeorm_1.OneToOne)(() => user_entity_1.UserEntity, user => user.otp, { onDelete: "CASCADE" }),
     __metadata("design:type", user_entity_1.UserEntity)
 ], OtpEntity.prototype, "user", void 0);
+__decorate([
+    (0, typeorm_1.OneToOne)(() => clinic_entity_1.ClinicEntity, clinic => clinic.otp, { onDelete: "CASCADE" }),
+    __metadata("design:type", clinic_entity_1.ClinicEntity)
+], OtpEntity.prototype, "clinic", void 0);
 exports.OtpEntity = OtpEntity = __decorate([
     (0, typeorm_1.Entity)(entity_name_enum_1.EntityName.Otp)
 ], OtpEntity);

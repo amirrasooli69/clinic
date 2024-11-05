@@ -5,6 +5,7 @@ export declare class UserEntity {
     last_name: string;
     mobile: string;
     mobile_verify: boolean;
+    role: string;
     otpId: number;
     otp: OtpEntity;
 }

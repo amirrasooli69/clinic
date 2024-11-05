@@ -5,11 +5,13 @@ import { AuthModule } from "../auth/auth.module";
 import { UserModule } from "../user/user.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { ClinicModule } from "../clinic/clinic.module";
 
 @Module({
     imports: [TypeOrmModule.forRoot(typeOrmConfig()),
         AuthModule,
-        UserModule
+        UserModule,
+        ClinicModule
     ],
     controllers: [AppController],
     providers: [AppService],

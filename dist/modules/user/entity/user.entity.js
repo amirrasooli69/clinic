@@ -14,6 +14,7 @@ const class_validator_1 = require("class-validator");
 const entity_name_enum_1 = require("../../../common/enum/entity-name.enum");
 const typeorm_1 = require("typeorm");
 const otp_entity_1 = require("./otp.entity");
+const role_enum_1 = require("../../../common/enum/role.enum");
 let UserEntity = class UserEntity {
 };
 exports.UserEntity = UserEntity;
@@ -32,7 +33,7 @@ __decorate([
     __metadata("design:type", String)
 ], UserEntity.prototype, "last_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "mobile", void 0);
 __decorate([
@@ -40,11 +41,15 @@ __decorate([
     __metadata("design:type", Boolean)
 ], UserEntity.prototype, "mobile_verify", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ default: role_enum_1.RoleUser.User }),
+    __metadata("design:type", String)
+], UserEntity.prototype, "role", void 0);
+__decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], UserEntity.prototype, "otpId", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => otp_entity_1.OtpEntity, otp => otp.user, { onDelete: "CASCADE" }),
+    (0, typeorm_1.OneToOne)(() => otp_entity_1.OtpEntity, (otp) => otp.user),
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", otp_entity_1.OtpEntity)
 ], UserEntity.prototype, "otp", void 0);

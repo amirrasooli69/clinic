@@ -19,13 +19,14 @@ const typeorm_1 = require("typeorm");
 const typeorm_2 = require("@nestjs/typeorm");
 const core_1 = require("@nestjs/core");
 const message_enum_1 = require("../../common/enum/message.enum");
+const role_enum_1 = require("../../common/enum/role.enum");
 let UserService = class UserService {
     constructor(userRepository, req) {
         this.userRepository = userRepository;
         this.req = req;
     }
     async create(userDto) {
-        const { first_name, last_name, mobile } = userDto;
+        const { first_name, last_name, mobile, role } = userDto;
         let user = await this.userRepository.findOneBy({ mobile });
         let message = null;
         if (user) {
@@ -33,20 +34,47 @@ let UserService = class UserService {
                 user.first_name = first_name;
             if (last_name)
                 user.last_name = last_name;
+            if (role != role_enum_1.RoleUser.User)
+                user.role = role;
             message = message_enum_1.PublicMessage.Updated;
         }
         else {
             user = this.userRepository.create({
                 first_name,
                 last_name,
-                mobile
+                mobile,
+                role: role_enum_1.RoleUser.User,
             });
             message = message_enum_1.PublicMessage.Created;
         }
         await this.userRepository.save(user);
         return {
-            message
+            message,
         };
+    }
+    async addUser(userDto) {
+        console.log(userDto);
+        const { first_name, last_name, mobile, role } = userDto;
+        console.log(first_name, last_name, mobile, role);
+        if (!mobile)
+            return { message: message_enum_1.BadRequestMessage.InvalidMobileNumber };
+        if (!this.checkExistByMobile(mobile)) {
+            await this.userRepository.insert({
+                first_name,
+                last_name,
+                mobile,
+                role,
+            });
+            return {
+                message: message_enum_1.PublicMessage.Created,
+            };
+        }
+        return {
+            message: message_enum_1.confilictMessage.ConfilictMobile,
+        };
+    }
+    async checkExistByMobile(mobile) {
+        return this.userRepository.findOneBy({ mobile });
     }
     async checkExistUser(id) {
         const user = await this.userRepository.findOneBy({ id });
@@ -66,7 +94,7 @@ let UserService = class UserService {
             throw new common_1.NotFoundException(message_enum_1.NotFoundMessage.NotFoundUser);
         await this.userRepository.remove(user);
         return {
-            message: message_enum_1.PublicMessage.Deleted
+            message: message_enum_1.PublicMessage.Deleted,
         };
     }
 };

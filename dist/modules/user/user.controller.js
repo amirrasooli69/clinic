@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const user_dto_1 = require("./dto/user.dto");
 const user_service_1 = require("./user.service");
 const swagger_1 = require("@nestjs/swagger");
+const role_decorator_1 = require("../../common/decorators/role.decorator");
+const role_enum_1 = require("../../common/enum/role.enum");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -29,6 +31,9 @@ let UserController = class UserController {
     }
     findAll() {
         return this.userService.findAll();
+    }
+    addUser(userDto) {
+        return this.userService.addUser(userDto);
     }
     delete(id) {
         return this.userService.delete(id);
@@ -56,6 +61,15 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "findAll", null);
 __decorate([
+    (0, common_1.Put)("/new-user"),
+    (0, role_decorator_1.CanAccess)(role_enum_1.RoleUser.Admin),
+    __param(0, (0, common_1.Query)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_dto_1.CreateUserDto]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "addUser", null);
+__decorate([
+    (0, role_decorator_1.CanAccess)(role_enum_1.RoleUser.Admin),
     (0, common_1.Delete)("/delete/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),

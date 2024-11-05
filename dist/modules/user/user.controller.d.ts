@@ -8,6 +8,13 @@ export declare class UserController {
     }>;
     getUserById(id: number): Promise<import("./entity/user.entity").UserEntity>;
     findAll(): Promise<import("./entity/user.entity").UserEntity[]>;
+    addUser(userDto: CreateUserDto): Promise<{
+        message: import("../../common/enum/message.enum").BadRequestMessage;
+    } | {
+        message: import("../../common/enum/message.enum").PublicMessage;
+    } | {
+        message: import("../../common/enum/message.enum").confilictMessage;
+    }>;
     delete(id: number): Promise<{
         message: import("../../common/enum/message.enum").PublicMessage;
     }>;
